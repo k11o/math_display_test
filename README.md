@@ -2,5 +2,5 @@
 実験
 
 $$
-   |\psi_1\rangle = a|0\rangle + b|1\rangle
+  x^2 - 6x + 1 = 0
 $$
