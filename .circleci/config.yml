@@ -5,6 +5,7 @@ jobs:
         - image: kalium40/ubuntu-ja-latex:latest
       steps:
         - checkout
+        - run: apt-get install pandoc -y
         - run: pandoc --mathjax -s -o index.html readme.md
         - store_artifacts:
             path: index.html
@@ -15,6 +16,7 @@ jobs:
         - image: kalium40/ubuntu-ja-latex:latest
       steps:
         - checkout
+        - run: apt-get install pandoc -y
         - run: pandoc --mathjax -s -o index.html readme.md
         - store_artifacts:
             path: index.html
