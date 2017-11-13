@@ -16,8 +16,10 @@ jobs:
         - image: kalium40/ubuntu-ja-latex:latest
       steps:
         - checkout
-        - run: apt-get install pandoc -y
+        - run: apt-get install pandoc lftp -y
+        - run: echo "set ssl:verify-certificate no" >> ~/.lftprc
         - run: pandoc --mathjax -s -o index.html README.md
+        - run: lftp -u kalium40.html.xdomain.jp,${FTP_PASSWORD} -e "put index.html;quit" sv2.html.xdomain.ne.jp
         - store_artifacts:
             path: index.html
             destination: index.html
