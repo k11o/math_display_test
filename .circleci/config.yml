@@ -6,7 +6,7 @@ jobs:
       steps:
         - checkout
         - run: apt-get install pandoc -y
-        - run: pandoc --mathjax -s -o index.html readme.md
+        - run: pandoc --mathjax -s -o index.html README.md
         - store_artifacts:
             path: index.html
             destination: index.html
@@ -17,7 +17,7 @@ jobs:
       steps:
         - checkout
         - run: apt-get install pandoc -y
-        - run: pandoc --mathjax -s -o index.html readme.md
+        - run: pandoc --mathjax -s -o index.html README.md
         - store_artifacts:
             path: index.html
             destination: index.html
