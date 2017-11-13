@@ -1,0 +1,34 @@
+version: 2
+jobs:
+    build:
+      docker:
+        - image: kalium40/ubuntu-ja-latex:latest
+      steps:
+        - checkout
+        - run: pandoc --mathjax -s -o index.html readme.md
+        - store_artifacts:
+            path: index.html
+            destination: index.html
+
+    deploy:
+      docker:
+        - image: kalium40/ubuntu-ja-latex:latest
+      steps:
+        - checkout
+        - run: pandoc --mathjax -s -o index.html readme.md
+        - store_artifacts:
+            path: index.html
+            destination: index.html
+
+workflows:
+  version: 2
+  build-n-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore: master
+      - deploy:
+          filters:
+            branches:
+              only: master
